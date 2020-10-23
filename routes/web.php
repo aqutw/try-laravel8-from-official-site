@@ -76,9 +76,12 @@ Route::get('user/{id}', function ($id) {
     return [$id, $name];
 })->where(['id' => '[0-9]+', 'name' => '[a-z]+']);*/
 
+$before = App\Http\Middleware\BeforeMiddleware::class;
+$after = App\Http\Middleware\AfterMiddleware::class;
 Route::get('test_RouteServiceProvider/{id}', function ($id) {
     return $id;
-});
+})
+->middleware('grp1'); #->middleware([$before, $after]);
 
 Route::get('search/{search}', function ($search) {
     return $search;
@@ -101,3 +104,17 @@ Route::get('api/users/{user}', function (App\Models\User $user) {
 Route::get('api/posts/{post:slug}', function (App\Models\Post $post) {
     return $post;
 });
+
+
+/*
+use App\Http\Middleware\CheckAge;
+
+Route::middleware([CheckAge::class])->group(function () {
+    Route::get('/', function () {
+        //
+    });
+
+    Route::get('admin/profile', function () {
+        //
+    })->withoutMiddleware([CheckAge::class]);
+});*/
