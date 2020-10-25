@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\TryController;
@@ -72,6 +73,10 @@ Route::get('user/{name?}', function ($name = null) {
 Route::get('user/{name?}', function ($name = 'John') {
     return $name;
 });
+
+Route::resource('users0', AdminUserController::class)->parameters([
+    'users0' => 'admin_user'
+]);
 
 /*
 Route::get($uri, $callback);
