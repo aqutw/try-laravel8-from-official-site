@@ -5,6 +5,9 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\TryController;
 use App\Http\Controllers\ShowProfileController;
+use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\PhotoCommentController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +37,8 @@ Route::resource('photos', PhotoController::class)->only([
 Route::resource('photos', PhotoController::class)->except([
     'create', 'store', 'update', 'destroy'
 ]);
+
+Route::resource('photos.comments', PhotoCommentController::class);
 
 # /test_single_act_ctrl/9
 Route::get('/test_single_act_ctrl/{id}', ShowProfileController::class);
