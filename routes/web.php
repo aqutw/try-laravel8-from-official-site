@@ -21,9 +21,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+/*
 Route::resources([
     'photos' => PhotoController::class,
     'posts' => PostController::class,
+]);
+*/
+Route::resource('photos', PhotoController::class)->only([
+    'index', 'show'
+]);
+Route::resource('photos', PhotoController::class)->except([
+    'create', 'store', 'update', 'destroy'
 ]);
 
 # /test_single_act_ctrl/9
