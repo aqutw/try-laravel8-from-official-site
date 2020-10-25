@@ -38,7 +38,10 @@ Route::resource('photos', PhotoController::class)->except([
     'create', 'store', 'update', 'destroy'
 ]);
 
-Route::resource('photos.comments', PhotoCommentController::class);
+Route::resource('photos.comments', PhotoCommentController::class)
+#->scoped([ 'comment' => 'slug', ]);
+#->shallow(); # we will have comments/{comment}....
+->names([ 'create' => 'photos.build' ]);
 
 # /test_single_act_ctrl/9
 Route::get('/test_single_act_ctrl/{id}', ShowProfileController::class);
