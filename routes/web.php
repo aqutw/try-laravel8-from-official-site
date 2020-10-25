@@ -8,6 +8,7 @@ use App\Http\Controllers\TryController;
 use App\Http\Controllers\ShowProfileController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\PhotoCommentController;
+use App\Http\Controllers\PostController;
 
 
 /*
@@ -77,6 +78,8 @@ Route::get('user/{name?}', function ($name = 'John') {
 Route::resource('users0', AdminUserController::class)->parameters([
     'users0' => 'admin_user'
 ]);
+
+Route::resource('users.posts', PostController::class)->scoped(); # generating users/{user}/posts... & users/{user}/posts/{post}...
 
 /*
 Route::get($uri, $callback);
