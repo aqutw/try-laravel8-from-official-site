@@ -21,6 +21,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resources([
+    'photos' => PhotoController::class,
+    'posts' => PostController::class,
+]);
+
 # /test_single_act_ctrl/9
 Route::get('/test_single_act_ctrl/{id}', ShowProfileController::class);
 
