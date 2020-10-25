@@ -26,6 +26,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('blade', function () {
+    return view('child');
+});
+
 /*
 Route::resources([
     'photos' => PhotoController::class,
