@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Repositories\UserRepository;
+
 class UserController extends Controller
 {
     /**
@@ -11,6 +13,7 @@ class UserController extends Controller
      *
      * @return void
      */
+    /*
     public function __construct()
     {
         echo <<<EOF
@@ -20,6 +23,22 @@ class UserController extends Controller
 
         \$this->middleware('subscribed')->except('store');
         EOF;
+    }*/
+
+    /**
+     * The user repository instance.
+     */
+    protected $users;
+
+    /**
+     * Create a new controller instance.
+     *
+     * @param  UserRepository  $users
+     * @return void
+     */
+    public function __construct(UserRepository $users)
+    {
+        $this->users = $users;
     }
 
     public function index()
