@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\TryController;
+use App\Http\Controllers\ShowProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,9 @@ use App\Http\Controllers\TryController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+# /test_single_act_ctrl/9
+Route::get('/test_single_act_ctrl/{id}', ShowProfileController::class);
 
 Route::redirect('/bar', '/foo');
 #Route::redirect('/bar', '/foo', 301);
