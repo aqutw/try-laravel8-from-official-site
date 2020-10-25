@@ -32,9 +32,10 @@ Route::resources([
     'posts' => PostController::class,
 ]);
 */
+Route::get('photos/popular', [PhotoController::class, 'popular']);
 Route::resource('photos', PhotoController::class)->only([
     'index', 'show'
-]);
+    ]);
 # Route::apiResource('photos', PhotoController::class); # <-- will not have create and edit actions.
 Route::resource('photos', PhotoController::class)->except([
     'create', 'store', 'update', 'destroy'
